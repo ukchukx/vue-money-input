@@ -1,5 +1,5 @@
 {
-  "name": "vue-money-input",
+  "name": "@ukchukx/vue-money-input",
   "version": "1.0.0",
   "description": "A Vue component for inputting Naira-formatted amounts.",
   "main": "dist/vue-money-input.ssr.js",

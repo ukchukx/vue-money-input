@@ -5,14 +5,14 @@ A Vue component for inputting monetary amounts.
 ## Installation
 
 ```js
-npm i -S vue-money-input
+npm i -S @ukchukx/vue-money-input
 ```
 
 ### Browser
 
 ```html
 <script type="text/javascript" src="https://unpkg.com/vue"></script>
-<script type="text/javascript" src="https://unpkg.com/vue-money-input"></script>
+<script type="text/javascript" src="https://unpkg.com/@ukchukx/vue-money-input"></script>
 <script type="text/javascript">
   Vue.use(MoneyInput);
 </script>
@@ -21,7 +21,7 @@ npm i -S vue-money-input
 ### Module
 
 ```js
-import MoneyInput from 'vue-money-input';
+import MoneyInput from '@ukchukx/vue-money-input';
 ```
 
 ## Usage
