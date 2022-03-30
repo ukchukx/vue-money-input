@@ -1,6 +1,6 @@
 {
   "name": "vue-money-input",
-  "version": "1.1.2",
+  "version": "1.0.0",
   "description": "A Vue component for inputting Naira-formatted amounts.",
   "main": "dist/vue-money-input.ssr.js",
   "module": "dist/vue-money-input.esm.js",
