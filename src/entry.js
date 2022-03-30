@@ -1,11 +1,11 @@
 // Import vue component
-import component from './NairaInput.vue';
+import component from './MoneyInput.vue';
 
 // install function executed by Vue.use()
 function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('NairaInput', component);
+  Vue.component('MoneyInput', component);
 }
 
 // Create module definition for Vue.use()

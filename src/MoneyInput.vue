@@ -1,13 +1,15 @@
 <template>
   <!-- eslint-disable -->
-  <masked-input type="text" v-model="amount" :mask="nairaMask" :guide="false" />
+  <masked-input type="text" v-model="amount" :mask="currencyMask" :guide="false" />
 </template>
 <script>
 import MaskedInput from 'vue-text-mask';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
+const normalizeAmount = (x) => x || x == 0 ? `${x}` : '';
+
 export default {
-  name: 'NairaInput',
+  name: 'MoneyInput',
   components: {
     MaskedInput
   },
@@ -22,25 +24,22 @@ export default {
     }
   },
   data() {
-
     return {
-      nairaMask: createNumberMask({ prefix: this.currencySymbol, allowDecimal: true }),
-      amount: `${this.initialAmount}`
+      amount: normalizeAmount(this.initialAmount)
     };
+  },
+  computed: {
+    currencyMask() {
+      return createNumberMask({ prefix: this.currencySymbol, allowDecimal: true });
+    }
   },
   watch: {
     amount(str) {
       const regex = new RegExp(`[${this.currencySymbol},]`, 'g');
-      const amount = str.length ? parseFloat(str.replace(regex, '')) : 0;
-      this.$emit('input', amount);
-    }
-  },
-  methods: {
-    reset() {
-      this.amount = this.initialAmount ? `${this.initialAmount}` : '';
+      this.$emit('input', str.length ? parseFloat(str.replace(regex, '')) : 0);
     },
-    clear() {
-      this.amount = '';
+    initialAmount(newAmount) {
+      this.amount = normalizeAmount(newAmount);
     }
   }
 };

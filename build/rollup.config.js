@@ -46,7 +46,7 @@ if (!argv.format || argv.format === 'es') {
   const esConfig = {
     ...baseConfig,
     output: {
-      file: 'dist/vue-naira-input.esm.js',
+      file: 'dist/vue-money-input.esm.js',
       format: 'esm',
       exports: 'named',
     },
@@ -70,9 +70,9 @@ if (!argv.format || argv.format === 'cjs') {
     external,
     output: {
       compact: true,
-      file: 'dist/vue-naira-input.ssr.js',
+      file: 'dist/vue-money-input.ssr.js',
       format: 'cjs',
-      name: 'vue-naira-input',
+      name: 'vue-money-input',
       exports: 'named',
       globals,
     },
@@ -97,9 +97,9 @@ if (!argv.format || argv.format === 'iife') {
     external,
     output: {
       compact: true,
-      file: 'dist/vue-naira-input.min.js',
+      file: 'dist/vue-money-input.min.js',
       format: 'iife',
-      name: 'VueNairaInput',
+      name: 'VueMoneyInput',
       exports: 'named',
       globals,
     },

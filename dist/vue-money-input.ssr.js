@@ -1,7 +1,9 @@
 'use strict';Object.defineProperty(exports,'__esModule',{value:true});function _interopDefault(e){return(e&&(typeof e==='object')&&'default'in e)?e['default']:e}var MaskedInput=_interopDefault(require('vue-text-mask')),createNumberMask=_interopDefault(require('text-mask-addons/dist/createNumberMask'));//
 
+var normalizeAmount = function (x) { return x || x == 0 ? ("" + x) : ''; };
+
 var script = {
-  name: 'NairaInput',
+  name: 'MoneyInput',
   components: {
     MaskedInput: MaskedInput
   },
@@ -16,25 +18,22 @@ var script = {
     }
   },
   data: function data() {
-
     return {
-      nairaMask: createNumberMask({ prefix: this.currencySymbol, allowDecimal: true }),
-      amount: ("" + (this.initialAmount))
+      amount: normalizeAmount(this.initialAmount)
     };
+  },
+  computed: {
+    currencyMask: function currencyMask() {
+      return createNumberMask({ prefix: this.currencySymbol, allowDecimal: true });
+    }
   },
   watch: {
     amount: function amount(str) {
       var regex = new RegExp(("[" + (this.currencySymbol) + ",]"), 'g');
-      var amount = str.length ? parseFloat(str.replace(regex, '')) : 0;
-      this.$emit('input', amount);
-    }
-  },
-  methods: {
-    reset: function reset() {
-      this.amount = this.initialAmount ? ("" + (this.initialAmount)) : '';
+      this.$emit('input', str.length ? parseFloat(str.replace(regex, '')) : 0);
     },
-    clear: function clear() {
-      this.amount = '';
+    initialAmount: function initialAmount(newAmount) {
+      this.amount = normalizeAmount(newAmount);
     }
   }
 };function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
@@ -124,7 +123,7 @@ var normalizeComponent_1 = normalizeComponent;/* script */
 var __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('masked-input',{attrs:{"type":"text","mask":_vm.nairaMask,"guide":false},model:{value:(_vm.amount),callback:function ($$v) {_vm.amount=$$v;},expression:"amount"}})};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('masked-input',{attrs:{"type":"text","mask":_vm.currencyMask,"guide":false},model:{value:(_vm.amount),callback:function ($$v) {_vm.amount=$$v;},expression:"amount"}})};
 var __vue_staticRenderFns__ = [];
 
   /* style */
@@ -132,22 +131,26 @@ var __vue_staticRenderFns__ = [];
   /* scoped */
   var __vue_scope_id__ = undefined;
   /* module identifier */
-  var __vue_module_identifier__ = "data-v-56dd86e9";
+  var __vue_module_identifier__ = "data-v-33edd0a0";
   /* functional template */
   var __vue_is_functional_template__ = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var component = normalizeComponent_1(
+  var __vue_component__ = /*#__PURE__*/normalizeComponent_1(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
     __vue_scope_id__,
     __vue_is_functional_template__,
     __vue_module_identifier__,
+    false,
+    undefined,
     undefined,
     undefined
   );// Import vue component
@@ -156,7 +159,7 @@ var __vue_staticRenderFns__ = [];
 function install(Vue) {
   if (install.installed) { return; }
   install.installed = true;
-  Vue.component('NairaInput', component);
+  Vue.component('MoneyInput', __vue_component__);
 }
 
 // Create module definition for Vue.use()
@@ -178,4 +181,4 @@ if (GlobalVue) {
 
 // Inject install function into component - allows component
 // to be registered via Vue.use() as well as Vue.component()
-component.install = install;exports.default=component;
+__vue_component__.install = install;exports.default=__vue_component__;

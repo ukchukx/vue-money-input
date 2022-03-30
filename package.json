@@ -1,10 +1,10 @@
 {
-  "name": "vue-naira-input",
+  "name": "vue-money-input",
   "version": "1.1.2",
   "description": "A Vue component for inputting Naira-formatted amounts.",
-  "main": "dist/vue-naira-input.ssr.js",
-  "module": "dist/vue-naira-input.esm.js",
-  "unpkg": "dist/vue-naira-input.min.js",
+  "main": "dist/vue-money-input.ssr.js",
+  "module": "dist/vue-money-input.esm.js",
+  "unpkg": "dist/vue-money-input.min.js",
   "files": [
     "dist/*",
     "src/**/*.vue"
@@ -21,6 +21,7 @@
     "vue",
     "currency",
     "input",
+    "money",
     "naira"
   ],
   "dependencies": {
@@ -29,10 +30,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ukchukx/vue-naira-input"
+    "url": "git+https://github.com/ukchukx/vue-money-input"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0",
+    "cross-env": "^7.0.3",
     "minimist": "^1.2.0",
     "rollup": "^1.12.1",
     "rollup-plugin-buble": "^0.19.6",
